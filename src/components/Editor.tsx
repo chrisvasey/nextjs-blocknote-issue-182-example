@@ -4,19 +4,16 @@ import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import "@blocknote/core/style.css";
 
 // Gets the previously stored editor contents.
-const initialContent: string | null = localStorage.getItem("editorContent");
+const initialContent = '';
 
 export default function Editor() {
   // Creates a new editor instance.
-  const editor: BlockNoteEditor | null = useBlockNote({
+  const editor = useBlockNote({
     // If the editor contents were previously saved, restores them.
     initialContent: initialContent ? JSON.parse(initialContent) : undefined,
     // Serializes and saves the editor contents to local storage.
     onEditorContentChange: (editor) => {
-      localStorage.setItem(
-        "editorContent",
-        JSON.stringify(editor.topLevelBlocks)
-      );
+      console.log(editor.topLevelBlocks)
     }
   });
 
